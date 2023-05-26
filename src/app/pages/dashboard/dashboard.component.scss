@@ -1,0 +1,77 @@
+.row{
+    line-height: 55px;
+    max-width: 100%;
+    
+}
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+//   td, th {
+//     width: 100%;
+//   }
+  .main-body{
+    padding-top: 20px;
+    margin:0 auto;
+    max-width: 1248px;
+    mat-form-field{
+      width: 100%;
+
+    }
+  }
+  .action{
+    display: flex;
+    padding-top: 25px;
+    width: 100%;
+  }
+  .space{
+    flex:1 1 auto;
+  }
+
+  .email{
+    color: rgba(66, 56, 56, 0.491);
+  }
+  .avtar{
+    display: flex;
+  }
+  .name{
+    color: rgb(48, 44, 44);
+  }
+  .addbtn:hover{
+    background-color: rgba(0, 0, 0, 0.215);
+  }
+  
+igx-avatar {
+  background: #571735;
+  color: white;
+}
+// .tool{
+//   background-color: #ffffff5f;
+//  margin: 0px auto;
+// }
+mat-toolbar{
+  // display: inline-block;
+  background-color: #ffffff5f;
+ margin: 0px auto;
+//  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.main-content{
+  // background-color: rgb(212 202 202 / 29%);
+  background-color: white;
+}
+
+  .small-box{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  table{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  }

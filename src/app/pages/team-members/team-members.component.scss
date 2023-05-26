@@ -1,0 +1,26 @@
+.members-box{
+    background-color:#e4e9f2;
+    margin: 0 2rem ;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin-bottom: 2rem;
+
+    
+    .members{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.4rem;
+    }
+    .member-profile{
+        text-align: center;
+       
+        width: 70px;
+        // height: 70px;
+
+        img{
+            height: 70px;
+        }
+        
+    }
+
+}

@@ -1,0 +1,18 @@
+<div mat-dialog-title>
+  <h1>Comapny Form</h1>
+</div>
+<form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content class="content">
+      <div class="row">
+          <mat-form-field appearance="outline">
+              <mat-label>Comapny Name</mat-label>
+              <input matInput placeholder="Enter Company Name" formControlName="name">
+              <mat-error *ngIf="hasError('name', 'required')">Company Name is Required</mat-error>
+          </mat-form-field>
+      </div>
+  <div mat-dialog-actions class="action">
+      <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+      <button mat-raised-button color="primary" [disabled]="!companyForm.valid">{{data ? 'Update' : 'Save'}}</button>
+  </div>
+  </div>
+</form>

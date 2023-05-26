@@ -1,0 +1,27 @@
+<div mat-dialog-title>
+    <h1>Roles Form</h1>
+</div>
+<form [formGroup]="rolesForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Roles Name</mat-label>
+                <input matInput placeholder="Leader" formControlName="name">
+                <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
+            </mat-form-field>
+        </div>
+            <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Roles Description</mat-label>
+                <textarea matInput placeholder="Lead The Team " formControlName="description"></textarea>
+                <mat-error *ngIf="hasError('description', 'required')">Description is required</mat-error> 
+                <mat-error *ngIf="hasError('description', 'minlength')">You have less than 20 characters</mat-error>
+            </mat-form-field>
+        </div>
+      
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update' : 'Save'}}</button>
+    </div>
+</form>

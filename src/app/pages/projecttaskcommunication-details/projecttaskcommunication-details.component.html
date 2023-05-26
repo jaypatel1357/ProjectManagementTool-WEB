@@ -1,0 +1,43 @@
+<div mat-dialog-title>
+    <h1>ProjectTaskCommunication Form</h1>
+</div>
+<form [formGroup]="projecttaskcommunicationForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Comment</mat-label>
+                <input matInput placeholder=" Enter Comment" formControlName="comment">
+                <mat-error *ngIf="hasError('comment', 'required')">Comment is Required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="commentBy" placeholder="commentBy">
+                    <mat-option value="{{User.id}}" *ngFor="let User of users">
+                      {{User.firstName}}
+                      </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="hasError('commentBy', 'required')">Please select</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-select formControlName="parenttaskId" placeholder="Parenttaskname">
+                        <mat-option value="{{ProjectTask.id}}" *ngFor="let ProjectTask of projecttasks">
+                          {{ProjectTask.title}}
+                          </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="hasError('parenttaskId', 'required')">Please select</mat-error>
+                    </mat-form-field>
+           
+            <!-- <mat-form-field appearance="fill">                                    
+                <mat-label>CreatedOn</mat-label>
+                <input matInput [matDatepicker]="startpicker" formControlName="createdOn">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="startpicker"></mat-datepicker-toggle>
+                <mat-datepicker #startpicker></mat-datepicker>
+              </mat-form-field> -->
+           
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" [disabled]="!projecttaskcommunicationForm.valid" type="submit">{{data ? 'Update' : 'Save'}}</button>
+    </div>
+</form>

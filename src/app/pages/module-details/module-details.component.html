@@ -1,0 +1,19 @@
+<div mat-dialog-title>
+    <h1>Module Form</h1>
+  </div>
+  <form [formGroup]="moduleForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Module Name</mat-label>
+                <input matInput placeholder="Enter Module Name" formControlName="moduleName">
+                <mat-error *ngIf="hasError('moduleName', 'required')">Module Name is Required</mat-error>
+            </mat-form-field>
+        </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary"  [disabled]="!moduleForm.valid" type="submit">{{data ? 'Update' : 'Save'}}</button>
+    </div>
+    </div>
+  </form>
+  

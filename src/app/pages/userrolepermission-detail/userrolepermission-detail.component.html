@@ -1,0 +1,30 @@
+<div mat-dialog-title>
+    <h1>UserRolePermission Form</h1>
+</div>
+<form [formGroup]="userrolepermissionForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="content">
+
+        <div class="row">
+            
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="userRoleId" placeholder="Select Role">
+                    <mat-option value="{{Role.id}}" *ngFor="let Role of roles">
+                        {{Role.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="moduleId" placeholder="Select Module">
+                    <mat-option value="{{Module.id}}" *ngFor="let Module of modules">
+                        {{Module.moduleName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update' : 'Save'}}</button>
+    </div>
+</form>

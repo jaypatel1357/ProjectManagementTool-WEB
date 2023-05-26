@@ -1,0 +1,104 @@
+<div mat-dialog-title>
+    <h1>Project</h1>
+</div>
+<form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row1">
+                <mat-form-field appearance="outline">
+                    <mat-label>ProjectName:</mat-label>
+                    <input matInput type="text" placeholder="Enter project name" formControlName="projectName" >
+                    <mat-error *ngIf="hasError('projectName', 'required')">Enter project name</mat-error> 
+                  </mat-form-field>
+
+                </div>
+                <div class="row1">
+                    <mat-form-field appearance="outline">
+                        <textarea matInput type="text" placeholder="Enter Description" formControlName="description"></textarea>
+                        <mat-hint align="end">Not less then 20 characters.</mat-hint>
+                        <mat-error *ngIf="hasError('description', 'required')">Description is required</mat-error>
+                        <mat-error *ngIf="hasError('description', 'minlength')">You have less than 20 characters</mat-error>
+                      </mat-form-field>
+                </div>
+        <div class="row1">
+             <mat-form-field appearance="outline">
+                <mat-label>StartDate:</mat-label>
+                <input matInput [matDatepicker]="picker1" placeholder="Start Date" formControlName="startDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <mat-error *ngIf="hasError('startDate', 'required')">Choose start date</mat-error>
+              </mat-form-field>
+              
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker2" placeholder="End Date"
+                 [min]="projectForm.get('startDate').value" formControlName="endDate">
+                 <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-error *ngIf="hasError('endDate', 'required')">Choose end date</mat-error>
+              </mat-form-field>
+
+
+        </div>
+
+        <div class="row1">
+                <mat-form-field appearance="outline">
+                    <mat-select formControlName="ownerId" placeholder="Select Owner">
+                        <mat-option value="{{user.id}}" *ngFor="let user of Users">
+                            {{user.firstName}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="hasError('ownerId', 'required')">Select owner</mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-select formControlName="projectLeaderId" placeholder="Select Leader">
+                        <mat-option value="{{user.id}}" *ngFor="let user of Users">
+                            {{user.firstName}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="hasError('projectLeaderId', 'required')">Select projectLeader</mat-error>
+                </mat-form-field>
+            
+
+        </div>
+        <div class="row1">
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="projectPortfolioId" placeholder="Select ProjectPortfolio">
+                    <mat-option value="{{ProjectPortfolio.id}}" *ngFor="let ProjectPortfolio of ProjectPortfolios">
+                        {{ProjectPortfolio.name}}
+                    </mat-option>
+                </mat-select>
+
+                <mat-error *ngIf="hasError('projectPortfolioId', 'required')">Select ProjectPortfolio</mat-error>
+            </mat-form-field>    
+
+        
+            <mat-form-field appearance="outline">
+                <mat-label>Status:</mat-label>
+                <mat-select formControlName="status">
+                  <mat-option *ngFor="let val of status" [value]="val">{{val}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="hasError('status', 'required')">Select Status</mat-error>
+            </mat-form-field>
+        </div>
+        <!-- <div class="row1">
+            <mat-form-field appearance="outline">
+               <mat-label>CreationDate:</mat-label>
+                <input matInput [matDatepicker]="creationpicker" formControlName="creationDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="creationpicker"></mat-datepicker-toggle>
+                <mat-datepicker #creationpicker></mat-datepicker>
+                <mat-error *ngIf="projectForm.get('creationDate').hasError('required')">
+                    Choose CreationDate
+                 </mat-error> 
+            </mat-form-field>
+            
+        </div> -->
+    </div> 
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <!-- <button mat-raised-button color="primary" type="submit">{{data ? 'Update' : 'Save'}}</button> -->
+        <button mat-raised-button color="primary" [disabled]="!projectForm.valid">{{data ? 'Update' : 'Save'}}</button>
+    </div>
+</form>

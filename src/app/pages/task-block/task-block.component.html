@@ -1,0 +1,44 @@
+<div > 
+    <div class="project-box">
+        <div class="box-content">
+            <div class="title">
+                <h3> {{taskData.title}} </h3>
+                <div class="center">
+                    <button (click)="updateprojectreource(taskData)" mat-raised-button ><span class="material-symbols-outlined">edit</span></button> 
+                    <button (click)="deleteprojecttask()"><span class="material-symbols-outlined">delete</span></button>
+                </div>
+               
+            </div>
+            <div class="description">
+               {{ taskData.description }}
+            </div>
+            <div class="dates">
+                <div class="date">
+                    <p>Start Date</p>
+                    <p>{{taskData.startDate | date: 'dd/MM/yyyy'}}</p>
+                </div>
+                <div class="date">
+                    <p>End Date</p>
+                    <p>{{taskData.endDate | date: 'dd/MM/yyyy'}}</p>
+                </div>   
+            </div>
+            <div class="members">
+                <div class="detail">
+                    <p>AssignTo :</p>
+                    <p> {{taskData.assignMember}} </p>
+                </div>
+                <div class="detail">
+                    <P>ReviewBy :</P>
+                    <p>{{taskData.reviewerByUser}}</p>
+                </div>
+            </div>
+            <div class="portfolio">
+                <p>CreatedBy : </p>
+                <p>{{taskData.createdByUser}}</p>
+            </div>
+            <div class="end-content">
+                <p>status</p>
+                <p>{{taskData.status}}</p>
+            </div>
+        </div>   
+    </div>

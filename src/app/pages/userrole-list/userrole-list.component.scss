@@ -1,0 +1,29 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 100%;
+  }
+  .main-body{
+    padding-top: 20px;
+    margin:0 auto;
+    max-width: 1548px;
+    mat-form-field{
+      width: 100%;
+
+    }
+  }
+  .action{
+    display: flex;
+    padding-top: 25px;
+    width: 100%;
+  }
+  .space{
+    flex:1 1 auto;
+  }

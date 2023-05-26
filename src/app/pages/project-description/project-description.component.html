@@ -1,0 +1,54 @@
+<div *ngIf="!project">Project Not Found!</div>
+
+<div *ngIf="project"> 
+    <div class="project-box">
+        <div class="box-content">
+            <div class="title">
+                <h3>{{ project.projectName }}</h3>
+                <div class="center">
+                    <button  mat-raised-button (click)="UpdateProject(project)"><span class="material-symbols-outlined">edit</span></button> 
+                    <button (click)=" DeleteProject(project.id)"><span class="material-symbols-outlined">delete</span></button>
+                </div>
+               
+            </div>
+            <div class="description">
+                {{project.description}}
+            </div>
+            <div class="dates">
+                <div class="date">
+                    <p>Creation Date</p>
+                    <p>{{project.creationDate | date: 'dd/MM/yyyy'}}</p>
+                </div>
+                <div class="date">
+                    <p>Start Date</p>
+                    <p>{{project.startDate | date: 'dd/MM/yyyy'}}</p>
+                </div>
+                <div class="date">
+                    <p>End Date</p>
+                    <p>{{project.endDate | date: 'dd/MM/yyyy'}}</p>
+                </div>   
+            </div>
+            <div class="members">
+                <div class="detail">
+                    <p>Owner:</p>
+                    <p>{{ project.userName }}</p>
+                </div>
+                <div class="detail">
+                    <P>Project leader:</P>
+                    <p>{{project.projectLeaderName}}</p>
+                </div>
+            </div>
+            <div class="portfolio">
+                <p>Project PortfolioId:</p>
+                <p>{{project.projectPortfolioName}}</p>
+            </div>
+            <div class="end-content">
+                <p>status</p>
+                <p>{{project.status}}</p>
+            </div>
+        </div>   
+    </div>
+    <app-team-members></app-team-members>
+</div>
+
+

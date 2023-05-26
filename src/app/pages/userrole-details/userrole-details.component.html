@@ -1,0 +1,33 @@
+<div mat-dialog-title>
+    <h1>Userrole Form</h1>
+</div>
+<form [formGroup]="userroleForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="content">
+        
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="userId" placeholder="Select User">
+                    <mat-option value="{{User.id}}" *ngFor="let User of users">
+                      {{User.firstName}}
+                      </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="hasError('userId', 'required')">Select User</mat-error>
+                </mat-form-field>
+                
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="roleId" placeholder="Select Role">
+                    <mat-option value="{{Role.id}}" *ngFor="let Role of roles">
+                      {{Role.name}}
+                      </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="hasError('roleId', 'required')">Select Role</mat-error>
+                </mat-form-field>
+               
+        </div>
+        
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update' : 'Save'}}</button>
+    </div>
+</form>

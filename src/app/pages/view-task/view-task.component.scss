@@ -1,0 +1,42 @@
+.top-section{
+    display: flex;
+    padding: 1rem 0;
+    align-items: center;
+    margin: 0 2rem;
+    border-bottom: 2px solid black;
+  
+    h2{
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0 2rem;
+    }
+    input{
+      flex: 1;
+      padding: 0.5rem 1rem;
+    }
+    button{
+      margin: 0 2rem;
+    }
+  
+  }
+.content-section{
+    margin: 2rem 2rem;
+
+    .task-block{
+        margin-bottom: 1rem;
+
+        .task-tile{
+            width: 100%;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            border-bottom: 2px solid red;
+           
+         }
+    }
+   
+}
+
+mat-panel-title{
+  text-transform: capitalize;
+}

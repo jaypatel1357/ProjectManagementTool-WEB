@@ -1,0 +1,42 @@
+
+
+h3{
+    font-size: 22px;
+    text-transform: capitalize;
+  }
+.project-box{
+    margin: 2rem 2rem;
+    .box-content{ 
+       background: #e4e9f2;
+       padding: 1rem 1rem;
+       
+       border-radius: 4px;
+   }
+   .title{
+       display: flex;
+       justify-content: space-between;
+
+       .center{
+           display: flex;
+           justify-content: center;
+           gap: 20px;
+
+           button{
+               border-radius: 4px;
+           }
+       }
+   }
+   .description{
+       margin-bottom: 1rem;
+   }
+   .dates{
+       display: flex;
+       gap: 25px;
+   }
+   .detail, .end-content, .portfolio {
+       display: flex;
+       gap: 20px;
+   }
+  
+   
+}

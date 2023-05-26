@@ -1,0 +1,40 @@
+<div class="wrapper">
+    <div class="top-content">
+      <h2>Projects</h2>
+      <input matInput [(ngModel)]="searchText" placeholder="Search Here" #input>
+      <button  mat-raised-button (click)="openproject()">Create Project</button>
+    </div>
+    <div class="main-content">
+      <a [routerLink]="'project-description/'+ project.id" *ngFor="let project of projects | filter : searchText">
+        <div class="content-block" >
+          <div class="title">
+            <h3>{{ project.projectName }}</h3>
+          </div>
+          <div class="detail-content">
+            <div>
+              <span class="material-symbols-outlined">attach_file</span>
+              <small>4 Attach</small>
+            </div>
+            <div>
+              <span class="material-symbols-outlined">hourglass_top </span>
+              <small>{{ totaldays(project.startDate, project.endDate) }} Days</small>
+            </div>
+            <div>
+              <span class="material-symbols-outlined">group</span>
+              <small>4 Member</small>
+            </div>
+            <div>
+              <span class="material-symbols-outlined">Chat</span>
+              <small>3</small>
+            </div>
+    
+    
+          </div>
+          <div class="box-end">
+            <p>Time-Line</p>
+            <p>{{ dueday(project.endDate) }} Day left</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>

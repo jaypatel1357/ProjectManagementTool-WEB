@@ -1,0 +1,101 @@
+<div mat-dialog-title>         
+    <h1>ProjectTask Form</h1>
+</div>
+<form [formGroup]="projecttaskForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row1">
+        <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Leader" formControlName="title">
+            <mat-error *ngIf="hasError('title', 'required')">Title is required</mat-error>
+        </mat-form-field>
+    </div>
+    <div class="row1">
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Lead The Team " formControlName="description"></textarea>
+                    <mat-error *ngIf="hasError('description', 'required')">Description is required</mat-error> 
+                    <mat-error *ngIf="hasError('description', 'minlength')">You have less than 20 characters</mat-error>
+        </mat-form-field>
+
+    </div>
+    <div class="row1">
+        <mat-form-field appearance="outline">
+            <mat-select formControlName="assignMemberId" placeholder="Select Member">
+                <mat-option value="{{user.id}}" *ngFor="let user of users">
+                    {{user.firstName}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="hasError('assignMemberId', 'required')">Please select</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-select formControlName="reviewerBy" placeholder="Select Reviewer">
+                <mat-option value="{{user.id}}" *ngFor="let user of users">
+                    {{user.firstName}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="hasError('reviewerBy', 'required')">Please select</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-select formControlName="createdBy" placeholder="Select Createdby">
+                <mat-option value="{{user.id}}" *ngFor="let user of users">
+                    {{user.firstName}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="hasError('createdBy', 'required')">Please select</mat-error>
+        </mat-form-field>
+
+    </div>
+        <div class="row1">
+            <mat-form-field appearance="fill">
+                <mat-label>Start Date</mat-label>
+                <input matInput [matDatepicker]="startpicker" formControlName="startDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="startpicker"></mat-datepicker-toggle>
+                <mat-datepicker #startpicker></mat-datepicker>
+                <mat-error *ngIf="hasError('startDate', 'required')">Choose start date</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker2" placeholder="End Date"
+                 [min]="projecttaskForm.get('startDate').value" formControlName="endDate">
+                 <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-error *ngIf="hasError('endDate', 'required')">Choose end date</mat-error>
+              </mat-form-field>
+        </div>
+        <div class="row1">
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="projectId" placeholder="Select Project">
+                    <mat-option value="{{Project.id}}" *ngFor="let Project of project">
+                        {{Project.projectName}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="hasError('projectId', 'required')">Please select</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status">
+                    <mat-option *ngFor="let val of status" [value]="val">{{val}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="hasError('status', 'required')">Please select</mat-error>
+            </mat-form-field>
+
+            <!-- <mat-form-field appearance="outline">
+                <mat-select formControlName="parentprojecttaskId" placeholder="Select Member">
+                    <mat-option value="{{ProjectTask.id}}" *ngFor="let ProjectTask of projectTasks">
+                        {{ProjectTask.title}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field> -->
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" [disabled]="!projecttaskForm.valid" type="submit">{{data ? 'Update' : 'Save'}}</button>
+    </div>
+</form>

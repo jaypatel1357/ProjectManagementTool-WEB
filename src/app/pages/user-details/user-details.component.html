@@ -1,0 +1,86 @@
+<div mat-dialog-title>
+    <h1>User Form</h1>
+</div>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="Enter Your Frist Name" formControlName="firstName">
+                <mat-error *ngIf="hasError('firstName', 'required')">Frist name is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Enter Your Last Name" formControlName="lastName">
+                <mat-error *ngIf="hasError('lastName', 'required')">Last name is required</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Company Name</mat-label>
+                <mat-select formControlName="companyId" placeholder="Select Company">
+                    <mat-option value="{{Company.id}}" *ngFor="let Company of companies">
+                        {{Company.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="hasError('companyId', 'required')">Select company</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Designation</mat-label>
+                <mat-select formControlName="designationId" placeholder="Select Designation">
+                    <mat-option value="{{Designation.id}}" *ngFor="let Designation of designation">
+                        {{Designation.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="hasError('designationId', 'required')">Select designation</mat-error>
+            </mat-form-field>
+
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Contact Number</mat-label>
+                <input matInput placeholder="Contact Number" formControlName="phone">
+                <mat-error *ngIf="hasError('phone', 'required')">Contact number is a required</mat-error>
+                <mat-error *ngIf="hasError('phone', 'pattern')">Please provide a valid contact number</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Mobile Number</mat-label>
+                <input matInput placeholder="Mobile Number" formControlName="mobile">
+                <mat-error *ngIf="hasError('mobile', 'required')">Mobile number is a required</mat-error>
+                <mat-error *ngIf="hasError('mobile', 'pattern')">Please provide a valid mobile number</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row1">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Enter Your Valid Email ID" formControlName="email">
+                <mat-error *ngIf="email.errors?.['required']">Email is a required</mat-error>
+                <mat-error *ngIf="email.errors?.['pattern']">Please provide a valid email address</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row1">
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" placeholder="Enter Your Valid password" formControlName="password">
+                <mat-error *ngIf="hasError('password', 'required')">Password is a required</mat-error>
+                <mat-error *ngIf="hasError('password', 'pattern')">Password must Contain UpperCase, Lowercase, Special
+                    Charecter.</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row1">
+            <mat-form-field appearance="outline">
+                <mat-label>Address</mat-label>
+                <textarea matInput placeholder="Enter Your Address" formControlName="address"></textarea>
+                <mat-error *ngIf="hasError('address', 'required')">Address is a required</mat-error>
+                <mat-error *ngIf="hasError('address', 'minlength')">You have less than 20 characters</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <!-- <button mat-raised-button color="primary" (click)="ngOnInit()"  type="submit">{{data ? 'Update' : 'Save'}}</button> -->
+        <button mat-raised-button color="primary" [disabled]="!userForm.valid">{{data ? 'Update' : 'Save'}}</button>
+        <!-- <button mat-raised-button color="primary">{{data ? 'Update' : 'Save'}}</button> -->
+    </div>
+</form>

@@ -1,0 +1,50 @@
+<div mat-dialog-title>                     
+    <h1>ProjectResource Form</h1>
+</div>
+<form [formGroup]="projectresourceForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="fill">
+                <mat-label>Start Date</mat-label>
+                <input matInput [matDatepicker]="startpicker" formControlName="startDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="startpicker"></mat-datepicker-toggle>
+                <mat-datepicker #startpicker></mat-datepicker>
+                <mat-error *ngIf="hasError('startDate', 'required')">Choose Startdate</mat-error>
+              </mat-form-field>
+              
+              <mat-form-field appearance="fill">
+                <mat-label>End Date</mat-label>
+                <input matInput [matDatepicker]="endpicker" placeholder="End Date"
+                 [min]="projectresourceForm.get('startDate').value" formControlName="endDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="endpicker"></mat-datepicker-toggle>
+                <mat-datepicker #endpicker></mat-datepicker>
+                <mat-error *ngIf="hasError('endDate', 'required')">Choose Enddate</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="projectId" placeholder="Select Project">
+                    <mat-option value="{{Project.id}}" *ngFor="let Project of project">
+                        {{Project.projectName}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="hasError('projectId', 'required')">Please Select</mat-error>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline">
+                    <mat-select formControlName="memberId" placeholder="Select Member">
+                        <mat-option value="{{User.id}}" *ngFor="let User of users">
+                            {{User.firstName}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="hasError('memberId', 'required')">Please Select</mat-error>
+                </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" [disabled]="!projectresourceForm.valid" type="submit">{{data ? 'Update' : 'Save'}}</button>
+    </div>
+</form>

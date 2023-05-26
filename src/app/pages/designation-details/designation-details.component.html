@@ -1,0 +1,27 @@
+<div mat-dialog-title>
+    <h1>Designaton Form</h1>
+</div>
+<form [formGroup]="designationForm" (ngSubmit)="onSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row1">
+            <mat-form-field appearance="outline">
+                <mat-label>Designation Name</mat-label>
+                <input matInput placeholder="Enter Designation Name" formControlName="name">
+                <mat-error *ngIf="hasError('name', 'required')">Designation Name is Required</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="row1">
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea matInput placeholder="Lead The Team " formControlName="description"></textarea>
+                <mat-hint align="end">Not less then 20 characters.</mat-hint>
+                <mat-error *ngIf="hasError('description', 'required')">Description is Required</mat-error>
+                <mat-error *ngIf="hasError('description', 'minlength')">You have less than 20 characters</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary"  [disabled]="!designationForm.valid" type="submit">{{data ? 'Update' : 'Save'}}</button>
+    </div>
+</form>
